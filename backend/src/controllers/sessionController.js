@@ -2,7 +2,7 @@ import Session from "../models/Session.js";
 
 export const getPublishedSessions = async (req, res) => {
   try {
-    const sessions = await Session.find({}).lean();
+    const sessions = await Session.find({status: "published"}).lean();
     return res.status(200).json({ sessions });
   } catch (err) {
     return res.status(500).json({ message: "Server error" });
